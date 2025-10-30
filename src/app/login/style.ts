@@ -1,12 +1,14 @@
 "use client";
+
 import styled from "styled-components";
+import fundo from '../assets/fundoLogin.png'
 
 export const ContainerBody = styled.body`
   margin: 0;
   padding: 0;
   min-height: 100vh;
   width: 100%;
-  background-image: url("./../img/fundoLogin.png");
+  background-image: url(${fundo});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
