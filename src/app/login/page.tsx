@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import logo from "../assets/logo.png"
 import { ContainerBody, ContainerMain } from "./style";
-
+import Link from 'next/link';
 
 export default function Login() {
     return (
@@ -15,8 +15,8 @@ export default function Login() {
                             <input type="email" placeholder="example@email.com"/>
                             <p>Senha:</p>
                             <input type="password" placeholder="password"/>
-                            <p><a href="./Cadastro.html">Não possui conta? Cadastre AQUI!</a></p>
-                            <button type="submit"><a href="./inicial.html"  style={{textDecoration: 'none'}}>Entrar</a></button>
+                            <p><Link href="/Cadastro">Não possui conta? Cadastre AQUI!</Link></p>
+                            <button type="submit"><Link href="/inicial"  style={{textDecoration: 'none'}}>Entrar</Link></button>
                         </form>
                 </ContainerMain>
             </ContainerBody>

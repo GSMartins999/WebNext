@@ -94,5 +94,4 @@ export const ContainerMain = styled.main`
   button a:hover {
       color: red;
   }
-
 `;
