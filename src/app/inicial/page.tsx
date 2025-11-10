@@ -1,6 +1,17 @@
-import { ContainerBody, ContainerMain, ContainerHeader, ContainerFooter } from "./style";
+import { ContainerBody, ContainerMain, ContainerHeader, ContainerFooter} from "./style";
 import Image from "next/image";
 import Link from "next/link";
+import Logo from "./../assets/logo.png"
+import fundoMain from "./../assets/fundomain.png"
+import godofwar from "./../assets/godofwar.jpg"
+import rdr from "./../assets/rdr.png"
+import tlou from "./../assets/tlou.png"
+import fifa from "./../assets/fifa.png"
+import insta from "./../assets/instagram.png"
+import face from "./../assets/facebook.png"
+import x from "./../assets/twitter.png"
+import logobranca from "./../assets/logobranca.png"
+
 
 export default function inicial() {
     return (
@@ -9,18 +20,18 @@ export default function inicial() {
             <ContainerHeader>
                 <section>
                     <p>
-                        <Link href="./inicial.html">
+                        <Link href="./inicial">
                             Principal
                         </Link>
                     </p>
                     <p>
-                        <Link href="./Registro.html">
+                        <Link href="./Registro">
                             Jogos
                         </Link>
                     </p>
                 </section>
                 <section>
-                    <Image src={"./Image/logo.png"} alt="logo" />
+                    <Image src={Logo} alt="logo" />
                 </section>
                 <section>
                     <section>
@@ -32,7 +43,7 @@ export default function inicial() {
             </ContainerHeader>
             <ContainerMain>
                 <section className="container">
-                    <Image src="./Image/fundomain.png" alt="fundomain" />
+                    <Image src={fundoMain} alt="fundomain" />
                     <article>
                         <section>
                             <p>🎮 Bem-vindo ao Game Catalog! 🚀
@@ -50,16 +61,15 @@ export default function inicial() {
                             </p>
                         </section>
                         <aside>
-                            <Image src="./Image/logo.png" alt="logo" />
+                            <Image src={Logo} alt="logo" />
                         </aside>
                     </article>
-
                 </section>
 
 
                 <section className="cards">
                     <section>
-                        <Image src="./Image/rdr.png" alt="rdr" />
+                        <Image src={rdr} alt="rdr" />
                         <article>
                             <p><b>Red Dead Redemption 2</b></p>
                             <p>9 de outubro de 2018</p>
@@ -69,7 +79,7 @@ export default function inicial() {
                     </section>
 
                     <section>
-                        <Image src="./Image/godofwar.jpg" alt="godofwar" />
+                        <Image src={godofwar} alt="godofwar" />
                         <article>
                             <p><b>God Of War</b></p>
                             <p>9 de novembro de 2022</p>
@@ -79,7 +89,7 @@ export default function inicial() {
                     </section>
 
                     <section>
-                        <Image src="./Image/fifa.png" alt="fifa" />
+                        <Image src={fifa} alt="fifa" />
                         <article>
                             <p><b>FC25</b></p>
                             <p>27 de setembro de 2024</p>
@@ -89,7 +99,7 @@ export default function inicial() {
                     </section>
 
                     <section>
-                        <Image src="./Image/tlou.png" alt="tlou" />
+                        <Image src={tlou} alt="tlou" />
                         <article>
                             <p><b>The Last of Us</b></p>
                             <p>14 de junho de 2013</p>
@@ -103,7 +113,7 @@ export default function inicial() {
 
                 <article>
                     <section>
-                        <Image src="./Image/logo.png" alt="logo" />
+                        <Image src={Logo} alt="logo" />
                     </section>
                     <section>
                         <p>Siga o Game Catalog nas redes sociais Acompanhe nossas páginas para ficar por dentro das novidades
@@ -111,9 +121,9 @@ export default function inicial() {
                     </section>
                     <section>
                         <section>
-                            <Image src="./Image/instagram.png" alt="instagram" />
-                            <Image src="./Image/twitter.png" alt="x" />
-                            <Image src="./Image/facebook.png" alt="facebook" />
+                            <Image src={insta} alt="instagram" />
+                            <Image src={x} alt="x" />
+                            <Image src={face} alt="facebook" />
                         </section>
                     </section>
                 </article>
@@ -122,7 +132,7 @@ export default function inicial() {
             <ContainerFooter>
                 <span></span>
                 <p>© Game Catalog</p>
-                <Image src="./Image/logobranca.png" alt="Logo Game Catalog" />
+                <Image src={logobranca} alt="Logo Game Catalog" />
             </ContainerFooter>
 
         </ContainerBody>
