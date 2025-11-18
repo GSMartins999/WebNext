@@ -4,7 +4,7 @@ import styled from "styled-components";
 import fundoLogin from "../assets/fundoLogin.png";
 import rodape from "../assets/rodape.png";
 
-export const ContainerBody = styled.body`
+export const ContainerBody = styled.div`
   font-family: Arial, sans-serif;
   padding: 0;
   margin: 0;
@@ -33,6 +33,7 @@ export const ContainerHeader = styled.header`
     font-size: 1rem;
     font-weight: 500;
     transition: 0.3s;
+    
 
     &:hover {
       color: #ff9e48;
@@ -66,6 +67,7 @@ export const ContainerHeader = styled.header`
 
     section p {
       display: none;
+      color: black;
     }
   }
 `;
@@ -100,6 +102,7 @@ export const ContainerMain = styled.main`
         cursor: pointer;
         transition: 0.3s;
         font-weight: 600;
+        min-width: 200px;
 
         &:hover {
           transform: scale(1.05);
@@ -155,18 +158,19 @@ export const ContainerMain = styled.main`
             width: 100%;
             flex-direction: row;
 
-            p {
-              font-size: 1.1rem;
-              color: #333;
-            }
           }
 
           > p {
             font-size: 1rem;
-            color: #444;
+            color: black;
             margin-top: 10px;
           }
         }
+           > p {
+            font-size: 1rem;
+            color: black;
+            margin-top: 10px;
+          }
       }
     }
   }
@@ -317,3 +321,73 @@ export const ContainerFooter = styled.footer`
     }
   }
 `;
+
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+`;
+
+export const ModalContent = styled.div`
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    input {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    button {
+      background-color: #ff9e48;
+      color: white;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      &.cancelar {
+        background-color: #ccc;
+        color: #333;
+      }
+    }
+  }
+`

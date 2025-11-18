@@ -3,58 +3,74 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../assets/logo.png";
-import fundoMain from "../assets/fundomain.png";
-import godofwar from "../assets/godofwar.jpg";
-import rdr from "../assets/rdr.png";
-import tlou from "../assets/tlou.png";
-import fifa from "../assets/fifa.png";
 import insta from "../assets/instagram.png";
 import face from "../assets/facebook.png";
 import x from "../assets/twitter.png";
 import logobranca from "../assets/logobranca.png";
 import { ContainerBody, ContainerFooter, ContainerHeader, ContainerMain } from "./styled";
+import { useState } from "react";
+import { useJogos } from "@/context/AuthJogo";
+import { useRouter } from "next/navigation";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 
 export default function Registro() {
+
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [url, setURL] = useState("");
+  const [dataLancamento, setDataLancamento] = useState("");
+
+  const { registerJogo } = useJogos();
+  const router = useRouter();
+
+  async function handleRegistroJogo(e: React.FormEvent) {
+    e.preventDefault();
+
+    if (!name || !description || !url || !dataLancamento) {
+      console.log("Preencha todos os campos.");
+      return;
+    }
+
+    const sucesso = await registerJogo({
+      NomeDoJogo: name,
+      Descricao: description,
+      URL: url,
+      DataLancamento: new Date(dataLancamento),
+    });
+
+    if (sucesso) {
+      console.log("Jogo cadastrado!");
+      setName("");
+      setDescription("");
+      setURL("");
+      setDataLancamento("");
+
+      router.push("/historico");
+    } else {
+      console.log("Erro ao cadastrar jogo.");
+    }
+  }
+
   return (
     <ContainerBody>
-      <ContainerHeader>
-        <section>
-          <p>
-            <Link href="/inicial">Principal</Link>
-          </p>
-          <p>
-            <Link href="/Registro">Jogos</Link>
-          </p>
-        </section>
-
-        <section>
-          <Image src={Logo} alt="Logo" width={150} height={80} />
-        </section>
-
-        <section>
-          <section>
-            <span></span>
-            <span></span>
-            <span></span>
-          </section>
-        </section>
-      </ContainerHeader>
+      <Header/>
 
       <ContainerMain>
         <section>
-          <Link href="/Registro">
+          <Link href="/registro">
             <button>Novo Registro</button>
           </Link>
-          <Link href="/Historico" style={{ color: 'white', textDecoration: 'none' }}>
+          <Link href="/historico" style={{ color: 'white', textDecoration: 'none' }}>
             <button>Histórico</button>
           </Link>
         </section>
 
-        <form>
-          <input type="text" placeholder="Nome do Jogo" style={{ color: 'black' }} required />
-          <input type="text" placeholder="Descrição" style={{ color: 'black' }} required />
-          <input type="text" placeholder="URL da Imagem" style={{ color: 'black' }} required />
-          <input type="date" placeholder="Data de Lançamento" style={{ color: 'black' }} required />
+        <form onSubmit={handleRegistroJogo}>
+          <input type="text" placeholder="Nome do Jogo" style={{ color: 'black' }} required onChange={(e) => setName(e.target.value)} />
+          <input type="text" placeholder="Descrição" style={{ color: 'black' }} required onChange={(e) => setDescription(e.target.value)} />
+          <input type="text" placeholder="URL da Imagem" style={{ color: 'black' }} required onChange={(e) => setURL(e.target.value)} />
+          <input type="date" placeholder="Data de Lançamento" style={{ color: 'black' }} required onChange={(e) => setDataLancamento(e.target.value)} />
           <button type="submit">Cadastrar</button>
         </form>
 
@@ -69,11 +85,7 @@ export default function Registro() {
         </article>
       </ContainerMain>
 
-      <ContainerFooter>
-        <span></span>
-        <p>© Game Catalog</p>
-        <Image src={logobranca} alt="Logo Game Catalog" width={100} height={50} />
-      </ContainerFooter>
+      <Footer/>
     </ContainerBody>
   );
 }

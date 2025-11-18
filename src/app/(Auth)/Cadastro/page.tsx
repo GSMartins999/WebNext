@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import logo from "../assets/logo.png"
+import logo from "../../assets/logo.png"
 import { ContainerBody, ContainerMain } from "./style";
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
@@ -35,31 +35,31 @@ export default function Cadastro() {
   }
 
 
-    return (
-          <ContainerBody>
-                    <ContainerMain>
-                        <Image src={logo} alt="logo"/>
-                        <form >
-                            <p>Email:</p>
-                            <input id="email"
-                                type="email"
-                                placeholder="example@email.com"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                            <p>Senha:</p>
-                            <input id="password"
-                                type="password"
-                                placeholder="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
-                            <p><Link href="./login">Já possui conta? Clique AQUI!</Link></p>
-                            <button type="submit"><Link href="./inicial.html"  style={{textDecoration: 'none'}} onClick={handleRegister}>Entrar</Link></button>
-                        </form>
-                </ContainerMain>
-            </ContainerBody>
-    );
+  return (
+    <ContainerBody>
+      <ContainerMain>
+        <Image src={logo} alt="logo" />
+        <form onSubmit={(e) => { e.preventDefault(); handleRegister(); }}>
+          <p>Email:</p>
+          <input id="email"
+            type="email"
+            placeholder="example@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <p>Senha:</p>
+          <input id="password"
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <p onClick={() => router.push("/login")}>Já possui conta? Entre AQUI!</p>
+          <button >Entrar</button>
+        </form>
+      </ContainerMain>
+    </ContainerBody>
+  );
 }

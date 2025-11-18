@@ -4,7 +4,7 @@ import { LoginUser } from '../domain/use-cases/LoginUser';
 import { UpdateUser } from '../domain/use-cases/UpdateUser';
 import { DeleteUser } from '../domain/use-cases/DeleteUser';
 import { MockUserRepository } from '../infra/mocks/MockUserRepository';
-import { FindUserByEmail } from '../domain/use-cases/FindUserById';
+import { FindUserByEmail } from '../domain/use-cases/FindByEmail';
 
 export const makeUserCase = () => {
   const userRepository = MockUserRepository.getInstance();

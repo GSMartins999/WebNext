@@ -14,14 +14,14 @@ export class MockJogoRepository implements JogoRecord {
       1,
       NomeDoJogo.create('The Legend of Zelda: Ocarina of Time'),
       Descricao.create('Um jogo de ação-aventura épico.'),
-      URL.create('https://www.exemplo.com/zelda.jpg'),
+      URL.create('https://www.nintendo.com/eu/media/images/10_share_images/portals_3/2x1_Hub_TheLegendOfZelda_ToTK_image1600w.jpg'),
       DataLancamento.create(new Date('1998-11-21T00:00:00Z'))
     ),
     Jogo.create(
       2,
       NomeDoJogo.create('Cyberpunk 2077'),
       Descricao.create('RPG de ação-aventura em mundo aberto ambientado em Night City.'),
-      URL.create('https://www.exemplo.com/cyberpunk.jpg'),
+      URL.create('https://image.api.playstation.com/vulcan/ap/rnd/202111/3013/2tW2zf7n8wwwWXZO9dAQMVu5.png'),
       DataLancamento.create(new Date('2020-12-10T00:00:00Z'))
     )
   ];

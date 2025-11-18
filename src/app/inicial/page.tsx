@@ -11,36 +11,14 @@ import insta from "./../assets/instagram.png"
 import face from "./../assets/facebook.png"
 import x from "./../assets/twitter.png"
 import logobranca from "./../assets/logobranca.png"
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 
 
 export default function inicial() {
     return (
-
         <ContainerBody>
-            <ContainerHeader>
-                <section>
-                    <p>
-                        <Link href="./inicial">
-                            Principal
-                        </Link>
-                    </p>
-                    <p>
-                        <Link href="./Registro">
-                            Jogos
-                        </Link>
-                    </p>
-                </section>
-                <section>
-                    <Image src={Logo} alt="logo" />
-                </section>
-                <section>
-                    <section>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </section>
-                </section>
-            </ContainerHeader>
+            <Header/>
             <ContainerMain>
                 <section className="container">
                     <Image src={fundoMain} alt="fundomain" />
@@ -129,11 +107,7 @@ export default function inicial() {
                 </article>
             </ContainerMain>
 
-            <ContainerFooter>
-                <span></span>
-                <p>© Game Catalog</p>
-                <Image src={logobranca} alt="Logo Game Catalog" />
-            </ContainerFooter>
+            <Footer/>
 
         </ContainerBody>
 

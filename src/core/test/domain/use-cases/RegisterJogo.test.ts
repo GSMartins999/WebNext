@@ -14,7 +14,7 @@ describe('RegisterJogo Use Case', () => {
 
     beforeEach(() => {
         jogoRepository = MockJogoRepository.getInstance();
-        jogoRepository.reset(); 
+        jogoRepository.reset();
         registerJogo = new RegisterJogo(jogoRepository);
     });
 
@@ -24,34 +24,31 @@ describe('RegisterJogo Use Case', () => {
         const url = 'https://sims.com/photo.jpg';
         const dataLancamento = new Date('2014-09-02');
 
-        const params: RegisterJogoParams = { 
-            NomeDoJogo: nome, 
-            Descricao: descricao, 
-            URL: url, 
-            DataLancamento: dataLancamento 
+        const params: RegisterJogoParams = {
+            NomeDoJogo: nome,
+            Descricao: descricao,
+            URL: url,
+            DataLancamento: dataLancamento
         };
         const jogo = await registerJogo.execute(params);
 
         expect(jogo.IDJogo).toBeDefined();
         expect(jogo.NomeDoJogo.value).toBe(nome);
-        
+
         const savedJogos = await jogoRepository.findAll();
         expect(savedJogos.length).toBe(1);
     });
 
-    it('deve lançar um erro se algum Value Object for inválido (ex: URL)', async () => {
-        const urlInvalida = 'url-sem-protocolo.com';
-        const dataLancamento = new Date('2020-01-01');
-
-        const params: RegisterJogoParams = { 
-            NomeDoJogo: 'Nome', 
-            Descricao: 'Descricao', 
-            URL: urlInvalida, 
-            DataLancamento: dataLancamento 
+    it('deve lançar um erro se a URL for inválida', async () => {
+        const params = {
+            NomeDoJogo: 'Zelda',
+            Descricao: 'Descrição válida com mais de 10 caracteres.', // ✅ descrição válida
+            URL: 'ftp://invalid-url', // ❌ inválida
+            DataLancamento: new Date('1998-11-21'),
         };
 
-        await expect(
-            registerJogo.execute(params)
-        ).rejects.toThrow('O formato da URL é inválido. Deve começar com http:// ou https://');
+        await expect(registerJogo.execute(params))
+            .rejects
+            .toThrow('O formato da URL é inválido. Deve começar com http:// ou https://');
     });
 });

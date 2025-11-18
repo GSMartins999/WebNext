@@ -1,9 +1,9 @@
 "use client";
 
 import styled from "styled-components";
-import fundo from '../assets/fundoLogin.png'
+import fundo from '../../assets/fundoLogin.png'
 
-export const ContainerBody = styled.body`
+export const ContainerBody = styled.div`
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -55,6 +55,7 @@ export const ContainerMain = styled.main`
       margin: 0;
       font-size: 1rem;
       text-align: left;
+      color: black;
   }
 
   form p a {

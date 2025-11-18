@@ -4,7 +4,7 @@ import styled from "styled-components";
 import fundoLogin from "../assets/fundoLogin.png";
 import rodape from "../assets/rodape.png";
 
-export const ContainerBody = styled.body`
+export const ContainerBody = styled.div`
   font-family: Arial, sans-serif;
   padding: 0;
   margin: 0;
@@ -99,6 +99,7 @@ export const ContainerMain = styled.main`
         border-radius: 40px;
         cursor: pointer;
         transition: 0.3s;
+        min-width: 200px;
         font-weight: 600;
 
         &:hover {

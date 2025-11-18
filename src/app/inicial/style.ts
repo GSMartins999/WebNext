@@ -3,7 +3,7 @@
 import styled from "styled-components"
 import rodape from "./../assets/rodape.png"
 
-export const ContainerBody = styled.body`
+export const ContainerBody = styled.div`
   * {
     padding: 0;
     margin: 0;

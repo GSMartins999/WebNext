@@ -1,99 +1,111 @@
-"use client";
+'use client';
 
-import Image from "next/image";
 import Link from "next/link";
-import Logo from "../assets/logo.png";
-import tlou from "../assets/tlou.png";
-import insta from "../assets/instagram.png";
-import face from "../assets/facebook.png";
-import x from "../assets/twitter.png";
-import logobranca from "../assets/logobranca.png";
-import {
-  ContainerBody,
-  ContainerFooter,
-  ContainerHeader,
-  ContainerMain,
-} from "./styled";
+import { ContainerBody, ContainerFooter, ContainerHeader, ContainerMain, ModalContent, ModalOverlay } from "./styled";
+import { useJogos } from "@/context/AuthJogo";
+import { useState } from "react";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 
 export default function Historico() {
+  const { jogos, removeJogo, editJogo } = useJogos();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editData, setEditData] = useState({
+    IDJogo: 0,
+    NomeDoJogo: "",
+    Descricao: "",
+    URL: "",
+    DataLancamento: "",
+  });
+
+
+  function formatDateToInput(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  function openModal(jogo: any) {
+    const dataFormatada = formatDateToInput(new Date(jogo.DataLancamento.value));
+
+    setEditData({
+      IDJogo: jogo.IDJogo,
+      NomeDoJogo: jogo.NomeDoJogo.value,
+      Descricao: jogo.Descricao.value,
+      URL: jogo.URL.value,
+      DataLancamento: dataFormatada,
+    });
+
+    setModalOpen(true);
+  }
+
+
+  async function handleEdit(e: React.FormEvent) {
+    e.preventDefault();
+    await editJogo({
+      IDJogo: editData.IDJogo,
+      NomeDoJogo: editData.NomeDoJogo,
+      Descricao: editData.Descricao,
+      URL: editData.URL,
+      DataLancamento: new Date(editData.DataLancamento),
+    });
+    setModalOpen(false);
+  }
+
+  async function handleDelete(id: number) {
+    await removeJogo(id);
+  }
+
   return (
     <ContainerBody>
-      <ContainerHeader>
-        <section>
-          <p>
-            <Link href="/inicial">Principal</Link>
-          </p>
-          <p>
-            <Link href="/Registro">Jogos</Link>
-          </p>
-        </section>
-
-        <section>
-          <Image src={Logo} alt="Logo" width={150} height={80} />
-        </section>
-
-        <section>
-          <section>
-            <span></span>
-            <span></span>
-            <span></span>
-          </section>
-        </section>
-      </ContainerHeader>
+      <Header/>
 
       <ContainerMain>
         <section>
-          <Link href="/Registro">
-            <button>Novo Registro</button>
-          </Link>
-          <Link href="/Historico">
-            <button>Histórico</button>
-          </Link>
+          <Link href="/registro"><button>Novo Registro</button></Link>
+          <Link href="/historico"><button>Histórico</button></Link>
         </section>
 
         <section className="container">
-          <section>
-            <section>
-              <Image src={tlou} alt="The Last of Us" width={200} height={120} />
-            </section>
-
-            <section>
+          {jogos.map(jogo => (
+            <section key={jogo.IDJogo}>
+              <section>
+                <img src={jogo.URL.value} alt={jogo.NomeDoJogo.value} width={200} height={120} style={{ objectFit: "cover" }} />
+              </section>
               <section>
                 <section>
-                  <p>
-                    <b>God Of War</b>
-                  </p>
-                  <p>9 de novembro de 2022</p>
+                  <p><b>{jogo.NomeDoJogo.value}</b></p>
+                  <p>{new Date(jogo.DataLancamento.value).toLocaleDateString()}</p>
                 </section>
-                <p>
-                  God of War Ragnarök é um jogo eletrônico de ação-aventura
-                  desenvolvido pela Santa Monica Studio e publicado pela Sony.
-                </p>
+                <p>{jogo.Descricao.value}</p>
+              </section>
+              <section className="botao">
+                <button onClick={() => openModal(jogo)}>Editar</button>
+                <button style={{ backgroundColor: "red" }} onClick={() => handleDelete(jogo.IDJogo)}>Excluir</button>
               </section>
             </section>
-
-            <section className="botao">
-              <button>Editar</button>
-              <button style={{ backgroundColor: "red" }}>Excluir</button>
-            </section>
-          </section>
+          ))}
         </section>
 
-        <article>
-          <section>
-            <section>
-              <Image src={insta} alt="Instagram" width={40} height={40} />
-              <Image src={x} alt="Twitter/X" width={40} height={40} />
-              <Image src={face} alt="Facebook" width={40} height={40} />
-            </section>
-          </section>
-        </article>
+        {modalOpen && (
+          <ModalOverlay>
+            <ModalContent>
+              <img src={editData.URL} alt={editData.NomeDoJogo} />
+              <form onSubmit={handleEdit}>
+                <input type="text" value={editData.NomeDoJogo} onChange={(e) => setEditData({ ...editData, NomeDoJogo: e.target.value })} />
+                <input type="text" value={editData.Descricao} onChange={(e) => setEditData({ ...editData, Descricao: e.target.value })} />
+                <input type="text" value={editData.URL} onChange={(e) => setEditData({ ...editData, URL: e.target.value })} />
+                <input type="date" value={editData.DataLancamento} onChange={(e) => setEditData({ ...editData, DataLancamento: e.target.value })} />
+                <button type="submit">Salvar</button>
+                <button type="button" className="cancelar" onClick={() => setModalOpen(false)}>Cancelar</button>
+              </form>
+            </ModalContent>
+          </ModalOverlay>
+        )}
       </ContainerMain>
 
-      <ContainerFooter>
-        <p>© Game Catalog</p>
-        <Image src={logobranca} alt="Logo Game Catalog" width={100} height={50} />
-      </ContainerFooter>
+      <Footer/>
     </ContainerBody>
   );
 }
