@@ -3,7 +3,6 @@
 'use client'
 
 import styled from "styled-components"
-import rodape from "./../assets/rodape.png"
 
 export const ContainerHeader = styled.header`
   width: 100%;

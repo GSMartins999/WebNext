@@ -1,6 +1,5 @@
-import { ContainerBody, ContainerMain, ContainerHeader, ContainerFooter} from "./style";
+import { ContainerBody, ContainerMain} from "./style";
 import Image from "next/image";
-import Link from "next/link";
 import Logo from "./../assets/logo.png"
 import fundoMain from "./../assets/fundomain.png"
 import godofwar from "./../assets/godofwar.jpg"
@@ -10,7 +9,6 @@ import fifa from "./../assets/fifa.png"
 import insta from "./../assets/instagram.png"
 import face from "./../assets/facebook.png"
 import x from "./../assets/twitter.png"
-import logobranca from "./../assets/logobranca.png"
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 

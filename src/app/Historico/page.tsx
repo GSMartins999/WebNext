@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { ContainerBody, ContainerFooter, ContainerHeader, ContainerMain, ModalContent, ModalOverlay } from "./styled";
+import { ContainerBody, ContainerMain, ModalContent, ModalOverlay } from "./styled";
 import { useJogos } from "@/context/AuthJogo";
 import { useState } from "react";
 import { Header } from "../components/Header";

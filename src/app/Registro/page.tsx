@@ -2,12 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../assets/logo.png";
 import insta from "../assets/instagram.png";
 import face from "../assets/facebook.png";
 import x from "../assets/twitter.png";
-import logobranca from "../assets/logobranca.png";
-import { ContainerBody, ContainerFooter, ContainerHeader, ContainerMain } from "./styled";
+import { ContainerBody, ContainerMain } from "./styled";
 import { useState } from "react";
 import { useJogos } from "@/context/AuthJogo";
 import { useRouter } from "next/navigation";
@@ -55,7 +53,6 @@ export default function Registro() {
   return (
     <ContainerBody>
       <Header/>
-
       <ContainerMain>
         <section>
           <Link href="/registro">

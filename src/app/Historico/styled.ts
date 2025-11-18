@@ -1,7 +1,6 @@
 "use client";
 
 import styled from "styled-components";
-import fundoLogin from "../assets/fundoLogin.png";
 import rodape from "../assets/rodape.png";
 
 export const ContainerBody = styled.div`
