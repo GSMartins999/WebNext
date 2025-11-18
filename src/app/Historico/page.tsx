@@ -63,8 +63,8 @@ export default function Historico() {
 
       <ContainerMain>
         <section>
-          <Link href="/registro"><button>Novo Registro</button></Link>
-          <Link href="/historico"><button>Histórico</button></Link>
+          <Link href="/Registro"><button>Novo Registro</button></Link>
+          <Link href="/Historico"><button>Histórico</button></Link>
         </section>
 
         <section className="container">

@@ -44,7 +44,7 @@ export default function Registro() {
       setURL("");
       setDataLancamento("");
 
-      router.push("/historico");
+      router.push("/Historico");
     } else {
       console.log("Erro ao cadastrar jogo.");
     }
@@ -55,10 +55,10 @@ export default function Registro() {
       <Header/>
       <ContainerMain>
         <section>
-          <Link href="/registro">
+          <Link href="/Registro">
             <button>Novo Registro</button>
           </Link>
-          <Link href="/historico" style={{ color: 'white', textDecoration: 'none' }}>
+          <Link href="/Historico" style={{ color: 'white', textDecoration: 'none' }}>
             <button>Histórico</button>
           </Link>
         </section>

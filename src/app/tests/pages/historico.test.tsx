@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Historico from '@/app/historico/page';
+import Historico from '@/app/Historico/page';
 import { JogoProvider } from '@/context/AuthJogo';
 import { AuthProvider } from '@/context/AuthContext';
 

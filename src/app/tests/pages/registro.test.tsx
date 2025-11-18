@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Registro from '@/app/registro/page';
+import Registro from '@/app/Registro/page';
 import { AuthProvider } from '@/context/AuthContext';
 import { JogoProvider } from '@/context/AuthJogo';
 

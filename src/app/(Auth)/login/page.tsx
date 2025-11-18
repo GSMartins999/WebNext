@@ -48,7 +48,7 @@ export default function Login() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required />
-                    <p onClick={() => router.push("/cadastro")}>Não possui conta? Cadastre AQUI!</p>
+                    <p onClick={() => router.push("/Cadastro")}>Não possui conta? Cadastre AQUI!</p>
                     <button type="submit" style={{ textDecoration: 'none' }}>Entrar</button>
                 </form>
             </ContainerMain>

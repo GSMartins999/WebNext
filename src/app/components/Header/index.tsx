@@ -12,7 +12,7 @@ export function Header() {
             <Link href="/inicial">Principal</Link>
           </p>
           <p>
-            <Link href="/registro">Jogos</Link>
+            <Link href="/Registro">Jogos</Link>
           </p>
         </section>
 

@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import logo from "../../assets/logo.png"
 import { ContainerBody, ContainerMain } from "./style";
-import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useState } from 'react';
 import { useRouter } from "next/navigation"
@@ -56,7 +55,7 @@ export default function Cadastro() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <p onClick={() => router.push("/login")}>Já possui conta? Entre AQUI!</p>
+          <p onClick={() => router.push("/")}>Já possui conta? Entre AQUI!</p>
           <button >Entrar</button>
         </form>
       </ContainerMain>
