@@ -32,7 +32,7 @@ export class LoginUser {
         password: string,
         hashedPassword: string
     ): Promise<boolean> {
-        return `hashed_${password}` === hashedPassword;
+        return password === hashedPassword;
     }
 
 }

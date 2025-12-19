@@ -6,6 +6,11 @@ export class DataLancamento {
       throw new Error("Data de lançamento é obrigatória e deve ser válida.");
     }
 
+    const now = new Date();
+    if (value.getTime() > now.getTime()) {
+      throw new Error("A data de lançamento não pode ser no futuro.");
+    }
+
     return new DataLancamento(value);
   }
 }

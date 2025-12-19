@@ -9,6 +9,7 @@ export class UpdateUser {
     async execute(params: {
         id: string;
         email?: string;
+        password?: string;
     }): Promise<User> {
         const { id, email } = params;
 
@@ -19,11 +20,12 @@ export class UpdateUser {
         }
 
         const newEmail = email ? Email.create(email) : user.email;
+        const newPassword = params.password ? Password.create(params.password) : user.password;
 
         const updatedUser = User.create(
             user.id,
             newEmail,
-            user.password,
+            newPassword,
         );
 
         await this.userRepository.update(updatedUser);
